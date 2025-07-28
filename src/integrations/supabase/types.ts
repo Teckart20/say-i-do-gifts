@@ -14,6 +14,137 @@ export type Database = {
   }
   public: {
     Tables: {
+      contributions: {
+        Row: {
+          amount: number | null
+          contributor_email: string | null
+          contributor_name: string | null
+          created_at: string | null
+          gift_id: string
+          id: string
+          is_anonymous: boolean | null
+          is_confirmed: boolean | null
+          message: string | null
+          payment_method: string | null
+          pix_transaction_id: string | null
+          quantity: number | null
+        }
+        Insert: {
+          amount?: number | null
+          contributor_email?: string | null
+          contributor_name?: string | null
+          created_at?: string | null
+          gift_id: string
+          id?: string
+          is_anonymous?: boolean | null
+          is_confirmed?: boolean | null
+          message?: string | null
+          payment_method?: string | null
+          pix_transaction_id?: string | null
+          quantity?: number | null
+        }
+        Update: {
+          amount?: number | null
+          contributor_email?: string | null
+          contributor_name?: string | null
+          created_at?: string | null
+          gift_id?: string
+          id?: string
+          is_anonymous?: boolean | null
+          is_confirmed?: boolean | null
+          message?: string | null
+          payment_method?: string | null
+          pix_transaction_id?: string | null
+          quantity?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contributions_gift_id_fkey"
+            columns: ["gift_id"]
+            isOneToOne: false
+            referencedRelation: "gifts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      couples: {
+        Row: {
+          accent_color: string | null
+          background_image_url: string | null
+          bride_name: string
+          ceremony_address: string | null
+          ceremony_time: string | null
+          cover_photo_url: string | null
+          created_at: string | null
+          font_body: string | null
+          font_titles: string | null
+          google_maps_link: string | null
+          groom_name: string
+          id: string
+          pix_key: string | null
+          primary_color: string | null
+          reception_address: string | null
+          reception_time: string | null
+          secondary_color: string | null
+          slug: string
+          theme: Database["public"]["Enums"]["wedding_theme"] | null
+          updated_at: string | null
+          user_id: string
+          wedding_date: string
+          welcome_message: string | null
+        }
+        Insert: {
+          accent_color?: string | null
+          background_image_url?: string | null
+          bride_name: string
+          ceremony_address?: string | null
+          ceremony_time?: string | null
+          cover_photo_url?: string | null
+          created_at?: string | null
+          font_body?: string | null
+          font_titles?: string | null
+          google_maps_link?: string | null
+          groom_name: string
+          id?: string
+          pix_key?: string | null
+          primary_color?: string | null
+          reception_address?: string | null
+          reception_time?: string | null
+          secondary_color?: string | null
+          slug: string
+          theme?: Database["public"]["Enums"]["wedding_theme"] | null
+          updated_at?: string | null
+          user_id: string
+          wedding_date: string
+          welcome_message?: string | null
+        }
+        Update: {
+          accent_color?: string | null
+          background_image_url?: string | null
+          bride_name?: string
+          ceremony_address?: string | null
+          ceremony_time?: string | null
+          cover_photo_url?: string | null
+          created_at?: string | null
+          font_body?: string | null
+          font_titles?: string | null
+          google_maps_link?: string | null
+          groom_name?: string
+          id?: string
+          pix_key?: string | null
+          primary_color?: string | null
+          reception_address?: string | null
+          reception_time?: string | null
+          secondary_color?: string | null
+          slug?: string
+          theme?: Database["public"]["Enums"]["wedding_theme"] | null
+          updated_at?: string | null
+          user_id?: string
+          wedding_date?: string
+          welcome_message?: string | null
+        }
+        Relationships: []
+      }
       expenses: {
         Row: {
           amount: number
@@ -51,6 +182,197 @@ export type Database = {
             columns: ["technician_id"]
             isOneToOne: false
             referencedRelation: "technicians"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      gift_suggestions: {
+        Row: {
+          couple_id: string
+          couple_response: string | null
+          created_at: string | null
+          guest_email: string | null
+          guest_name: string
+          id: string
+          message: string | null
+          status: string | null
+          suggested_gift: string
+          updated_at: string | null
+        }
+        Insert: {
+          couple_id: string
+          couple_response?: string | null
+          created_at?: string | null
+          guest_email?: string | null
+          guest_name: string
+          id?: string
+          message?: string | null
+          status?: string | null
+          suggested_gift: string
+          updated_at?: string | null
+        }
+        Update: {
+          couple_id?: string
+          couple_response?: string | null
+          created_at?: string | null
+          guest_email?: string | null
+          guest_name?: string
+          id?: string
+          message?: string | null
+          status?: string | null
+          suggested_gift?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gift_suggestions_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "couples"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      gifts: {
+        Row: {
+          category: Database["public"]["Enums"]["gift_category"]
+          collected_amount: number | null
+          couple_id: string
+          created_at: string | null
+          description: string | null
+          desired_quantity: number
+          display_order: number | null
+          id: string
+          image_url: string | null
+          name: string
+          purchase_link: string | null
+          purchased_quantity: number
+          suggested_value: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["gift_category"]
+          collected_amount?: number | null
+          couple_id: string
+          created_at?: string | null
+          description?: string | null
+          desired_quantity?: number
+          display_order?: number | null
+          id?: string
+          image_url?: string | null
+          name: string
+          purchase_link?: string | null
+          purchased_quantity?: number
+          suggested_value?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["gift_category"]
+          collected_amount?: number | null
+          couple_id?: string
+          created_at?: string | null
+          description?: string | null
+          desired_quantity?: number
+          display_order?: number | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          purchase_link?: string | null
+          purchased_quantity?: number
+          suggested_value?: number | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gifts_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "couples"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      guest_messages: {
+        Row: {
+          couple_id: string
+          created_at: string | null
+          guest_name: string
+          id: string
+          is_approved: boolean | null
+          message: string
+        }
+        Insert: {
+          couple_id: string
+          created_at?: string | null
+          guest_name: string
+          id?: string
+          is_approved?: boolean | null
+          message: string
+        }
+        Update: {
+          couple_id?: string
+          created_at?: string | null
+          guest_name?: string
+          id?: string
+          is_approved?: boolean | null
+          message?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "guest_messages_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "couples"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      guests: {
+        Row: {
+          companions_count: number | null
+          couple_id: string
+          created_at: string | null
+          email: string | null
+          id: string
+          name: string
+          phone: string | null
+          rsvp_date: string | null
+          rsvp_message: string | null
+          rsvp_status: Database["public"]["Enums"]["rsvp_status"] | null
+          updated_at: string | null
+        }
+        Insert: {
+          companions_count?: number | null
+          couple_id: string
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          name: string
+          phone?: string | null
+          rsvp_date?: string | null
+          rsvp_message?: string | null
+          rsvp_status?: Database["public"]["Enums"]["rsvp_status"] | null
+          updated_at?: string | null
+        }
+        Update: {
+          companions_count?: number | null
+          couple_id?: string
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          name?: string
+          phone?: string | null
+          rsvp_date?: string | null
+          rsvp_message?: string | null
+          rsvp_status?: Database["public"]["Enums"]["rsvp_status"] | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "guests_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "couples"
             referencedColumns: ["id"]
           },
         ]
@@ -128,6 +450,41 @@ export type Database = {
           year?: number
         }
         Relationships: []
+      }
+      photo_gallery: {
+        Row: {
+          caption: string | null
+          couple_id: string
+          created_at: string | null
+          display_order: number | null
+          id: string
+          image_url: string
+        }
+        Insert: {
+          caption?: string | null
+          couple_id: string
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          image_url: string
+        }
+        Update: {
+          caption?: string | null
+          couple_id?: string
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          image_url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "photo_gallery_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "couples"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       productivity_records: {
         Row: {
@@ -321,7 +678,23 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_unique_slug: {
+        Args: { bride_name: string; groom_name: string }
+        Returns: string
+      }
+      get_gift_status: {
+        Args: {
+          purchased_qty: number
+          desired_qty: number
+          collected_amt: number
+          suggested_val: number
+        }
+        Returns: string
+      }
+      is_couple_owner: {
+        Args: { couple_uuid: string }
+        Returns: boolean
+      }
     }
     Enums: {
       blood_type_enum: "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-"
@@ -334,9 +707,29 @@ export type Database = {
         | "banco"
         | "fardamento"
         | "outros"
+      gift_category:
+        | "eletrodomesticos"
+        | "decoracao"
+        | "experiencias"
+        | "cotas"
+        | "doacao"
+        | "cozinha"
+        | "banho"
+        | "quarto"
+        | "sala"
+        | "outros"
       motorcycle_transaction_type_enum: "compra" | "troca"
+      rsvp_status: "pendente" | "confirmado" | "recusado"
       uniform_size_enum: "PP" | "P" | "M" | "G" | "GG" | "XG" | "XXG"
       vacation_status_enum: "agendada" | "aprovada" | "cancelada" | "concluida"
+      wedding_theme:
+        | "classico"
+        | "moderno"
+        | "rustico"
+        | "minimalista"
+        | "romantico"
+        | "boho"
+        | "vintage"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -475,9 +868,31 @@ export const Constants = {
         "fardamento",
         "outros",
       ],
+      gift_category: [
+        "eletrodomesticos",
+        "decoracao",
+        "experiencias",
+        "cotas",
+        "doacao",
+        "cozinha",
+        "banho",
+        "quarto",
+        "sala",
+        "outros",
+      ],
       motorcycle_transaction_type_enum: ["compra", "troca"],
+      rsvp_status: ["pendente", "confirmado", "recusado"],
       uniform_size_enum: ["PP", "P", "M", "G", "GG", "XG", "XXG"],
       vacation_status_enum: ["agendada", "aprovada", "cancelada", "concluida"],
+      wedding_theme: [
+        "classico",
+        "moderno",
+        "rustico",
+        "minimalista",
+        "romantico",
+        "boho",
+        "vintage",
+      ],
     },
   },
 } as const
