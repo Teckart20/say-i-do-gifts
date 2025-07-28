@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+				'serif': ['Playfair Display', 'serif'],
+				'playfair': ['Playfair Display', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,6 +66,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				wedding: {
+					rose: 'hsl(var(--wedding-rose))',
+					gold: 'hsl(var(--wedding-gold))',
+					cream: 'hsl(var(--wedding-cream))',
+					sage: 'hsl(var(--wedding-sage))'
 				}
 			},
 			borderRadius: {
