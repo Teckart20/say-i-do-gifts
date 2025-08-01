@@ -23,7 +23,7 @@ interface CoupleProfile {
   welcome_message?: string;
   pix_key?: string;
   google_maps_link?: string;
-  theme?: string;
+  theme?: 'classico' | 'moderno' | 'rustico' | 'minimalista' | 'romantico' | 'boho' | 'vintage';
   primary_color?: string;
   secondary_color?: string;
   accent_color?: string;
